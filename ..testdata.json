@@ -1,0 +1,56 @@
+{
+  "object": "database",
+  "id": "1281ea55-d3b7-809a-9d6b-e0d4dfa52056",
+  "created_time": "2024-10-23T12:43:00Z",
+  "last_edited_time": "2024-10-23T12:49:00Z",
+  "created_by": {
+    "object": "user",
+    "id": "754bdb6f-294a-4756-8fb2-d806a1a566ba"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "754bdb6f-294a-4756-8fb2-d806a1a566ba"
+  },
+  "title": [
+    {
+      "type": "text",
+      "text": { "content": "UniPlan" },
+      "annotations": {
+        "bold": false,
+        "italic": false,
+        "strikethrough": false,
+        "underline": false,
+        "code": false,
+        "color": "default"
+      },
+      "plain_text": "UniPlan"
+    }
+  ],
+  "parent": {
+    "type": "page_id",
+    "page_id": "b6706975-7fe0-4c21-a21a-3c06d776e35f"
+  },
+  "url": "https://www.notion.so/1281ea55d3b7809a9d6be0d4dfa52056",
+  "public_url": "",
+  "properties": {
+    "Name": { "id": "title", "type": "title", "title": {} },
+    "Place": { "id": "q%3C_q", "type": "rich_text", "rich_text": {} },
+    "Time": { "id": "Q~~Y", "type": "date", "date": {} },
+    "Type": {
+      "id": "%5EFfL",
+      "type": "multi_select",
+      "multi_select": {
+        "options": [
+          {
+            "id": "6b2709cc-429c-4c29-b314-e540670e49b1",
+            "name": "Lecture",
+            "color": "blue"
+          }
+        ]
+      }
+    }
+  },
+  "description": [],
+  "is_inline": true,
+  "archived": false
+}
