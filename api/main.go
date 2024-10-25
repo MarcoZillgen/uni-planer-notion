@@ -5,9 +5,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	godotenv.Load()
 	r := mux.NewRouter()
 	r.HandleFunc("/api/notion/data", getNotionData).Methods("GET")
 	log.Println("Server is running on port 8080")

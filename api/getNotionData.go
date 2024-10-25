@@ -5,16 +5,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/jomei/notionapi"
 )
 
-const DB_ID = "id"
-const NOTION_KEY = "key"
+var DB_ID = os.Getenv("DB_ID")
+var NOTION_KEY = os.Getenv("NOTION_KEY")
 
 func getNotionData(w http.ResponseWriter, r *http.Request) {
-	client := notionapi.NewClient(NOTION_KEY)
-	db, err := client.Database.Query(context.Background(), DB_ID, nil)
+	client := notionapi.NewClient(notionapi.Token(NOTION_KEY))
+	db, err := client.Database.Query(context.Background(), notionapi.DatabaseID(DB_ID), nil)
 	if err != nil {
 		panic(err)
 	}
