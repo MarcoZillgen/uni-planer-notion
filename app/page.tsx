@@ -1,19 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 const times = {
   startTime: 8,
   endTime: 20,
 };
 
 export default async function Home() {
-  const d = await fetch("http://localhost:5432/api/notion/data").then(
-    async (res) => {
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      return res.json();
-    }
+  const fetchedData = await fetch("http://localhost:8080/api/notion/data").then(
+    (res) => res.json()
   );
+
   const data: { [key: string]: EventType[] } = {
     Monday: [],
     Tuesday: [],
@@ -23,7 +17,8 @@ export default async function Home() {
     Saturday: [],
     Sunday: [],
   };
-  d.forEach((event: EventType) => {
+
+  fetchedData.forEach((event: EventType) => {
     if (!data[event.Day]) {
       if (event.Day == "") {
         return;
@@ -48,7 +43,7 @@ export default async function Home() {
 }
 
 type TimetableProps = {
-  data: any;
+  data: { [key: string]: EventType[] };
 };
 
 async function Timetable({ data }: TimetableProps) {
@@ -140,7 +135,7 @@ function Event({ event }: EventProps) {
             backgroundColor: COLORS[event.Color].dark,
           }}
         />
-        <h3 className="text-xl font-bold">{event.Title}</h3>
+        <h3 className="text-xl font-bold truncate">{event.Title}</h3>
         <p className="text-sm">
           {event.Type} <br />
           {event.StartTime} - {event.EndTime}
@@ -151,8 +146,20 @@ function Event({ event }: EventProps) {
 }
 
 const COLORS = {
-  Yellow: { light: "#C19138", dark: "#372E20" },
-  Green: { light: "#3B7A57", dark: "#1F3A2D" },
-  Brown: { light: "#9B7A57", dark: "#7F3A2D" },
-  Pink: { light: "#BC7C9C", dark: "#5B4A6C" },
+  // Test colors
+  Pink: { light: "#3D405B", dark: "#1F202E" },
+  // Done colors
+  Orange: { light: "#CE8147", dark: "#885630" },
+  Red: { light: "#653239", dark: "#402024" },
+  Green: { light: "#566246", dark: "#363E2C" },
+  LightBlue: { light: "#759AAB", dark: "#4A616C" },
+  DarkBlue: { light: "#3D405B", dark: "#1F202E" },
+  Yellow: { light: "#E0A93D", dark: "#A0792C" },
+  // Done colors with exotic names
+  Caramel: { light: "#CE8147", dark: "#885630" },
+  Wine: { light: "#653239", dark: "#402024" },
+  Olive: { light: "#566246", dark: "#363E2C" },
+  SmurfIce: { light: "#759AAB", dark: "#4A616C" },
+  Blueberry: { light: "#3D405B", dark: "#1F202E" },
+  Sunny: { light: "#E0A93D", dark: "#A0792C" },
 };
